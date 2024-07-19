@@ -2,7 +2,14 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    fontFamily: {
+      raleway: ["Raleway", "sans-serif"],
+    },
+    extend: {
+      backgroundImage: {
+        clouds: "url('/assets/Cloud-background.png')",
+      },
+    },
   },
   plugins: [],
 };
