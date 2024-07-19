@@ -6,7 +6,7 @@ import bg from "../../assets/Cloud-background.png";
 
 const Main = () => {
   return (
-    <aside className="relative bg-[#1E213A] w-1/3 h-screen text-center p-6 flex flex-col justify-between gap-10 overflow-hidden">
+    <aside className="relative bg-[#1E213A] w-full lg:w-1/3 h-screen text-center p-6 flex flex-col justify-between gap-10 overflow-hidden">
       <div
         className="absolute inset-0 bg-center bg-no-repeat bg-contain"
         style={{

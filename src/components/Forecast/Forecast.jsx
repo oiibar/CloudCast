@@ -4,10 +4,10 @@ import ForecastList from "./ForecastList";
 
 const Forecast = () => {
   return (
-    <div className="flex-grow text-white p-6">
-      <div className="container">
+    <div className="p-6">
+      <div className="flex flex-col justiyfy-between gap-8">
         <Header />
-        {/* <ForecastList /> */}
+        <ForecastList />
       </div>
     </div>
   );
