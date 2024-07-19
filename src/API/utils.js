@@ -3,6 +3,5 @@ export const formatTemperature = (temp) => {
 };
 
 export const handleApiError = (error) => {
-  // Implement error handling logic
   console.error("API Error", error);
 };
