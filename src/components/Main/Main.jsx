@@ -1,10 +1,38 @@
-import React from "react";
-import shower from "../../assets/Shower.png";
+// src/components/Main/Main.jsx
+import React, { useContext, useEffect, useState } from "react";
+import { unitContext } from "../../AppContext";
+import { getWeatherByCity } from "../../API/weatherAPI";
 import marker from "../../assets/marker.svg";
 import aim from "../../assets/aim.svg";
 import bg from "../../assets/Cloud-background.png";
 
 const Main = () => {
+  const { unit } = useContext(unitContext);
+  const [weatherData, setWeatherData] = useState(null);
+  const city = "Astana"; // Replace with the default city name you want to fetch
+
+  useEffect(() => {
+    const fetchWeather = async () => {
+      try {
+        const data = await getWeatherByCity(city, unit);
+        setWeatherData(data);
+      } catch (error) {
+        console.error("Error fetching weather data", error);
+      }
+    };
+
+    fetchWeather();
+  }, [unit]);
+
+  const temperature = weatherData ? weatherData.main.temp : "--";
+  const weatherDescription = weatherData
+    ? weatherData.weather[0].description
+    : "--";
+  const cityName = weatherData ? weatherData.name : "--";
+  const iconUrl = weatherData
+    ? `https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@4x.png`
+    : "";
+
   return (
     <aside className="relative bg-[#1E213A] w-full lg:w-1/3 h-screen text-center p-6 flex flex-col justify-between gap-10 overflow-hidden">
       <div
@@ -22,23 +50,35 @@ const Main = () => {
           <img src={aim} alt="Locate" className="w-6 cursor-pointer" />
         </div>
       </div>
-      <img src={shower} alt="Shower" className="mx-auto relative z-10" />
+      <img
+        src={iconUrl}
+        alt={weatherDescription}
+        className={`mx-auto relative z-10 w-60 ${!weatherData ? "hidden" : ""}`}
+      />
       <h1 className="text-9xl font-medium text-white relative z-10">
-        <span className="text-[#E7E7EB]">15</span>{" "}
-        <span className="text-4xl text-[#6E707A]">°C</span>
+        {Math.round(temperature)}
+        <span className="text-4xl text-[#6E707A]">
+          °{unit === "metric" ? "C" : "F"}
+        </span>
       </h1>
       <h3 className="text-3xl font-semibold text-[#A09FB1] relative z-10">
-        Shower
+        {weatherDescription}
       </h3>
       <div className="relative z-10">
         <div>
-          Today <span className="mx-2">•</span> Fri, 5 June
+          Today <span className="mx-2">•</span>{" "}
+          {new Date().toLocaleDateString("en-US", {
+            weekday: "short",
+            day: "numeric",
+            month: "short",
+          })}
         </div>
         <div className="flex justify-center items-center mt-2">
-          <img src={marker} alt="Location: " className="w-4" />
-          <p className="ml-2">Helsinki</p>
+          <img src={marker} alt="Location" className="w-4" />
+          <p className="ml-2">{cityName}</p>
         </div>
       </div>
+      {!weatherData && <div className="text-white text-2xl font-bold">--</div>}
     </aside>
   );
 };
