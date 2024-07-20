@@ -3,7 +3,7 @@ import ForecastItem from "./ForecastItem";
 
 const ForecastList = ({ weatherData, unit }) => {
   return (
-    <div className="flex justify-center items-center gap-4 flex-wrap">
+    <div className="flex lg:justify-between justify-center items-center flex-wrap gap-4 ">
       <ForecastItem />
       <ForecastItem />
       <ForecastItem />

@@ -3,10 +3,11 @@ import dir from "../../../assets/dir.svg";
 import { formatWindDirection } from "../../../API/utils/formatWindDirection";
 
 const Wind = ({ wind, unit }) => {
-  const { speed, deg } = wind;
+  const { speed = 0, deg = 0 } = wind; // Set default values
   const direction = formatWindDirection(deg);
 
   const convertWindSpeed = (speed, unit) => {
+    if (typeof speed !== "number") return "--";
     if (unit === "imperial") {
       return (speed * 2.237).toFixed(1); // Convert from m/s to mph
     }
@@ -23,8 +24,13 @@ const Wind = ({ wind, unit }) => {
         {unit === "metric" ? "m/s" : "mph"}
       </p>
       <div className="flex gap-2 items-center">
-        <div className="w-12 h-12 bg-[#FFFFFF] opacity-30 rounded-full flex items-center justify-center">
-          <img src={dir} alt="Wind Direction" className="w-6 h-6" />
+        <div className="w-6 h-6 bg-[#FFFFFF] opacity-30 rounded-full flex items-center justify-center">
+          <img
+            src={dir}
+            alt="Wind Direction"
+            className="w-4 h-4"
+            style={{ transform: `rotate(${deg}deg)` }}
+          />
         </div>
         <p>{direction}</p>
       </div>

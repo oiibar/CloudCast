@@ -3,7 +3,7 @@ import Shower from "../../assets/Shower.png";
 
 const ForecastItem = () => {
   return (
-    <div className="flex flex-col justify-center items-center text-center px-6 py-4 gap-4 bg-[#1E213A]">
+    <div className="forecastItem">
       <p>Sun, 7 June</p>
       <img src={Shower} alt="Shower" className="w-12" />
       <div className="flex justify-between gap-4 text-lg">

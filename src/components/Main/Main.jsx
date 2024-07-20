@@ -1,12 +1,10 @@
 // src/components/Main/Main.jsx
 import React, { useContext, useEffect, useState } from "react";
-import { unitContext } from "../../AppContext";
-import { getWeatherByCity } from "../../API/weatherAPI";
 import marker from "../../assets/marker.svg";
 import aim from "../../assets/aim.svg";
 import bg from "../../assets/Cloud-background.png";
 
-const Main = ({ weatherData = null, unit = "metric" }) => {
+const Main = ({ weatherData, unit }) => {
   const temperature = weatherData ? weatherData.main.temp : "--";
   const weatherDescription = weatherData
     ? weatherData.weather[0].description
@@ -47,7 +45,7 @@ const Main = ({ weatherData = null, unit = "metric" }) => {
       <h3 className="text-3xl font-semibold text-[#A09FB1] relative z-10">
         {weatherDescription}
       </h3>
-      <div className="relative z-10">
+      <div className="relative z-10 text-[#88869D]">
         <div>
           Today <span className="mx-2">•</span>{" "}
           {new Date().toLocaleDateString("en-US", {
