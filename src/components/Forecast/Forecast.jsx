@@ -3,7 +3,7 @@ import Header from "./Header";
 import ForecastList from "./ForecastList";
 
 const Forecast = ({ forecast = [], unit = "metric" }) => {
-  console.log(forecast);
+  // console.log(forecast);
   return (
     <div className="container">
       <Header />

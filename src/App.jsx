@@ -1,17 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
-
 import { unitContext } from "./AppContext";
 import { getForecastByCity, getWeatherByCity } from "./API/weatherAPI";
-
 import Main from "./components/Main/Main";
 import Forecast from "./components/Forecast/Forecast";
 import TodayDetails from "./components/TodayDetails/TodayDetails";
+import Search from "./components/Main/Search";
 
 const App = () => {
-  const { unit } = useContext(unitContext);
+  const { unit, city, setCity } = useContext(unitContext);
   const [weatherData, setWeatherData] = useState(null);
   const [forecast, setForecast] = useState(null);
-  const city = "Astana";
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   useEffect(() => {
     const fetchWeather = async () => {
@@ -32,17 +31,33 @@ const App = () => {
       }
     };
 
-    fetchWeather();
-    fetchForecast();
-  }, [unit]);
+    if (city) {
+      fetchWeather();
+      fetchForecast();
+    }
+  }, [city, unit]);
+
+  const toggleSearchModal = () => {
+    setIsSearchOpen(!isSearchOpen);
+  };
 
   return (
     <div className="flex flex-col lg:flex-row">
-      <Main weatherData={weatherData} unit={unit} />
-      <section className="flex flex-col flex-grow lg:w-2/3 text-[#E7E7EB]">
-        <Forecast forecast={forecast} unit={unit} />
-        <TodayDetails weatherData={weatherData} unit={unit} />
-      </section>
+      {isSearchOpen ? (
+        <Search onClose={toggleSearchModal} onSearch={() => {}} />
+      ) : (
+        <>
+          <Main
+            weatherData={weatherData}
+            unit={unit}
+            onOpenSearch={toggleSearchModal}
+          />
+          <section className="flex flex-col flex-grow lg:w-2/3 text-[#E7E7EB]">
+            <Forecast forecast={forecast} unit={unit} />
+            <TodayDetails weatherData={weatherData} unit={unit} />
+          </section>
+        </>
+      )}
     </div>
   );
 };
