@@ -18,4 +18,8 @@
   .forecastItem {
     @apply flex flex-col justify-center items-center text-center p-4 gap-4 bg-[#1E213A];
   }
+  .search {
+    @apply bg-transparent hover:border hover:border-[#616475] p-4 w-full text-left flex items-center justify-between;
+    transition: border-color 0.3s ease;
+  }
 }
