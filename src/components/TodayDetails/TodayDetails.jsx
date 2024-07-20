@@ -5,7 +5,6 @@ import Visibility from "./Details/Visibility";
 import Pressure from "./Details/Pressure";
 
 const TodayDetails = ({ weatherData = null, unit = "metric" }) => {
-  console.log(weatherData);
   const wind = weatherData ? weatherData.wind : { speed: "--", deg: "--" };
   const humidity = weatherData ? weatherData.main.humidity : "--";
   const visibility = weatherData ? weatherData.visibility : "--";
@@ -14,8 +13,9 @@ const TodayDetails = ({ weatherData = null, unit = "metric" }) => {
   return (
     <div className="container mx-auto px-4 py-6">
       <h1 className="font-bold text-2xl mb-6">Today’s Highlights</h1>
-      <div className="flex flex-wrap justify-center gap-4">
+      <div className="flex justify-center items-center gap-4 flex-wrap">
         {/* <Wind wind={wind} unit={unit} /> */}
+        <Humidity humidity={humidity} />
         <Humidity humidity={humidity} />
         <Visibility visibility={visibility} unit={unit} />
         <Pressure pressure={pressure} />

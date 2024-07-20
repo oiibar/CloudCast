@@ -21,6 +21,9 @@
   .container {
     @apply max-w-3xl mx-auto;
   }
+  .detailItem {
+    @apply flex flex-col w-full sm:w-1/2 md:w-1/3 text-center px-6 py-4 bg-[#1E213A] justify-center items-center gap-4 flex-wrap;
+  }
 }
 
 @layer utilities {
