@@ -34,3 +34,21 @@ export const getForecastByCity = async (city, units = "metric") => {
     throw error;
   }
 };
+
+export const getWeatherByLocation = async (lat, lon, units = "metric") => {
+  try {
+    const response = await axios.get(`${BASE_URL}/weather`, {
+      params: {
+        lat: lat,
+        lon: lon,
+        appid: API_KEY,
+        units: units,
+      },
+      timeout: REQUEST_TIMEOUT,
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching weather data by location", error);
+    throw error;
+  }
+};
