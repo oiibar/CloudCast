@@ -6,24 +6,7 @@ import marker from "../../assets/marker.svg";
 import aim from "../../assets/aim.svg";
 import bg from "../../assets/Cloud-background.png";
 
-const Main = () => {
-  const { unit } = useContext(unitContext);
-  const [weatherData, setWeatherData] = useState(null);
-  const city = "Astana"; // Replace with the default city name you want to fetch
-
-  useEffect(() => {
-    const fetchWeather = async () => {
-      try {
-        const data = await getWeatherByCity(city, unit);
-        setWeatherData(data);
-      } catch (error) {
-        console.error("Error fetching weather data", error);
-      }
-    };
-
-    fetchWeather();
-  }, [unit]);
-
+const Main = ({ weatherData = null, unit = "metric" }) => {
   const temperature = weatherData ? weatherData.main.temp : "--";
   const weatherDescription = weatherData
     ? weatherData.weather[0].description

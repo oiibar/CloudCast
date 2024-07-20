@@ -1,12 +1,9 @@
-// AppContext.js
 import React, { createContext, useState } from "react";
 
-// Create a context
 export const unitContext = createContext();
 
-// Create a provider component
 export const AppProvider = ({ children }) => {
-  const [unit, setUnit] = useState("metric");
+  const [unit, setUnit] = useState("metric"); // Default unit
 
   return (
     <unitContext.Provider value={{ unit, setUnit }}>
