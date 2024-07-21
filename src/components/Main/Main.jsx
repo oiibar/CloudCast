@@ -1,8 +1,7 @@
 import React from "react";
-import marker from "../../assets/marker.svg";
-import aim from "../../assets/aim.svg";
-import bg from "../../assets/Cloud-background.png";
-import Search from "./Search";
+import bg from "../../assets/bg.png";
+import { AiOutlineAim } from "react-icons/ai";
+import { IoLocationSharp } from "react-icons/io5";
 
 const Main = ({ weatherData, unit, onOpenSearch }) => {
   const temperature = weatherData ? weatherData.main.temp : "--";
@@ -32,7 +31,7 @@ const Main = ({ weatherData, unit, onOpenSearch }) => {
             Search for places
           </button>
           <div className="bg-[#6E707A] rounded-full p-2">
-            <img src={aim} alt="Locate" className="w-6 cursor-pointer" />
+            <AiOutlineAim className="cursor-pointer" />
           </div>
         </div>
         <img
@@ -61,7 +60,7 @@ const Main = ({ weatherData, unit, onOpenSearch }) => {
             })}
           </div>
           <div className="flex justify-center items-center mt-2">
-            <img src={marker} alt="Location" className="w-4" />
+            <IoLocationSharp />
             <p className="ml-2">{cityName}</p>
           </div>
         </div>

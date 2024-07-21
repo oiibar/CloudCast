@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
-import search from "../../assets/search.svg";
-import arrow from "../../assets/arrow.svg";
+import { CiSearch } from "react-icons/ci";
+import { IoIosArrowForward } from "react-icons/io";
 import { unitContext } from "../../AppContext";
 
 const cities = [
@@ -78,7 +78,7 @@ const Search = ({ onClose, onSearch }) => {
               className="border border-[#E7E7EB] placeholder-[#616475] bg-transparent pl-10 pr-12 py-2 rounded-md w-full"
             />
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <img src={search} alt="Search" className="w-4" />
+              <CiSearch />
             </div>
           </div>
           <button
@@ -94,7 +94,8 @@ const Search = ({ onClose, onSearch }) => {
           {cities.map((city) => (
             <button className="search" onClick={() => handleCityClick(city)}>
               <span>{city}</span>
-              <img src={arrow} alt="Arrow" className="w-4" />
+
+              <IoIosArrowForward />
             </button>
           ))}
         </section>
