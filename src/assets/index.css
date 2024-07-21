@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply text-sm font-raleway font-medium text-[#E7E7EB] bg-[#100E1D];
+    @apply font-raleway font-medium text-[#E7E7EB] bg-[#100E1D];
   }
 }
 
@@ -17,6 +17,9 @@
   }
   .forecastItem {
     @apply flex flex-col justify-center items-center text-center p-4 gap-4 bg-[#1E213A];
+  }
+  .main {
+    @apply relative bg-[#1E213A] w-full lg:w-1/3 h-screen text-center p-6 flex flex-col justify-between gap-10 overflow-hidden;
   }
   .search {
     @apply bg-transparent hover:border hover:border-[#616475] p-4 w-full text-left flex items-center justify-between;

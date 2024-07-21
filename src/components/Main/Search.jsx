@@ -17,31 +17,27 @@ const Search = ({ onClose, onSearch }) => {
   const [searchInput, setSearchInput] = useState("");
   const { setCity } = useContext(unitContext);
 
-  // Handler function to update searchInput state
   const handleInputChange = (e) => {
     setSearchInput(e.target.value);
   };
 
-  // Handler function for the search button
   const handleSearch = () => {
-    setCity(searchInput); // Update city context
-    onSearch(); // Call the search function passed from App
+    setCity(searchInput);
+    onSearch();
     setSearchInput("");
-    onClose(); // Close the search component when search button is clicked
+    onClose();
   };
 
-  // Handler function for key down events
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
-      handleSearch(); // Trigger search when Enter is pressed
+      handleSearch();
     }
   };
 
-  // Handler function for city buttons
   const handleCityClick = (cityName) => {
-    setCity(cityName); // Update city context
-    onSearch(); // Call the search function passed from App
-    onClose(); // Close the search component when city button is clicked
+    setCity(cityName);
+    onSearch();
+    onClose();
   };
 
   return (
