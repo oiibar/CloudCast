@@ -1,14 +1,23 @@
 import React from "react";
-import Shower from "../../assets/Shower.png";
+import { formatDate } from "../../API/utils/formatDate";
 
-const ForecastItem = () => {
+const ForecastItem = ({ item, unit }) => {
+  const { date, temp, icon } = item;
+  const formattedDate = formatDate(date);
+  console.log(date, temp, icon);
+
   return (
     <div className="forecastItem">
-      <p>Sun, 7 June</p>
-      <img src={Shower} alt="Shower" className="w-12" />
+      <p>{formattedDate}</p>
+      <img
+        src={`https://openweathermap.org/img/wn/${icon}@4x.png`}
+        alt="Weather Icon"
+        className="w-24"
+      />
       <div className="flex justify-between gap-4 text-lg">
-        <p className="">16°C</p>
-        <p className="text-[#A09FB1]">11°C</p>
+        <p className="">
+          {Math.round(temp)}°{unit === "metric" ? "C" : "F"}
+        </p>
       </div>
     </div>
   );

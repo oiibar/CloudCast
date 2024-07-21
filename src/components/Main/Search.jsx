@@ -87,8 +87,12 @@ const Search = ({ onClose, onSearch }) => {
 
         {/* Location Buttons */}
         <section className="flex flex-col gap-4">
-          {cities.map((city) => (
-            <button className="search" onClick={() => handleCityClick(city)}>
+          {cities.map((city, index) => (
+            <button
+              className="search"
+              key={index}
+              onClick={() => handleCityClick(city)}
+            >
               <span>{city}</span>
 
               <IoIosArrowForward />

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { API_KEY, BASE_URL, FORECAST_URL, REQUEST_TIMEOUT } from "./config";
+import { processForecastData } from "./utils/forecastUtils";
 
 export const getWeatherByCity = async (city, units = "metric") => {
   try {
@@ -25,10 +26,12 @@ export const getForecastByCity = async (city, units = "metric") => {
         q: city,
         appid: API_KEY,
         units: units,
+        cnt: 40, // Adjusting count to get data for 5 days
       },
       timeout: REQUEST_TIMEOUT,
     });
-    return response.data;
+
+    return processForecastData(response.data.list);
   } catch (error) {
     console.error("Error fetching forecast data", error);
     throw error;
