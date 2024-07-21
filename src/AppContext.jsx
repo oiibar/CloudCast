@@ -4,7 +4,7 @@ export const unitContext = createContext();
 
 export const AppProvider = ({ children }) => {
   const [unit, setUnit] = useState("metric");
-  const [city, setCity] = useState("Almaty");
+  const [city, setCity] = useState("Oskemen");
 
   return (
     <unitContext.Provider value={{ unit, city, setUnit, setCity }}>

@@ -4,7 +4,7 @@ import { formatDate } from "../../API/utils/formatDate";
 const ForecastItem = ({ item, unit }) => {
   const { date, temp, icon } = item;
   const formattedDate = formatDate(date);
-  console.log(date, temp, icon);
+  const temperature = Math.round(temp);
 
   return (
     <div className="forecastItem">
@@ -12,11 +12,11 @@ const ForecastItem = ({ item, unit }) => {
       <img
         src={`https://openweathermap.org/img/wn/${icon}@4x.png`}
         alt="Weather Icon"
-        className="w-24"
+        className="w-16"
       />
       <div className="flex justify-between gap-4 text-lg">
-        <p className="">
-          {Math.round(temp)}°{unit === "metric" ? "C" : "F"}
+        <p>
+          {temperature}°{unit === "metric" ? "C" : "F"}
         </p>
       </div>
     </div>
