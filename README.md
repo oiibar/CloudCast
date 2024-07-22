@@ -4,18 +4,15 @@
 
 <p id="description">This is a weather app with search & unit switch functionality and detailed weather info followed by a user-friendly UI/UX</p>
 
-  
-  
 <h2>🧐 Features</h2>
 
 Here're some of the project's best features:
 
-*   Searching for city
-*   Get weather by geolocation
-*   Displaying necessary weather data
-*   5-day forecast
-*   Swtich between metric & imperial
-*   
+- Searching for city
+- Get weather by geolocation (In progress)
+- Displaying necessary weather data
+- 5-day forecast
+- Swtich between metric & imperial
 
 <h2>🛠️ Installation Steps:</h2>
 
@@ -37,17 +34,23 @@ npm i
 npm run dev
 ```
 
-  
 <h2>💻 Built with</h2>
 
 Technologies used in the project:
 
-*   ReactJS
-*   ReactJS built-in state management
-*   Vite
-*   TailwindCSS
-*   API
+- ReactJS
+- Redux (In progress)
+- Vite
+- TailwindCSS
+- API
 
+Here are some screenshots of the project:
+
+<p align="center">
+  <img src="../previews/Metric.png" alt="Metric">
+  <img src="../previews/Imperial.png" alt="Imperial">
+  <img src="../previews/Search.png" alt="Search">
+</p>
 
 <h2>💖Like my work?</h2>
 
