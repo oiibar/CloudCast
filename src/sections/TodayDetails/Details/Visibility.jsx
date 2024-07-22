@@ -1,12 +1,10 @@
 import React from "react";
 
 const Visibility = ({ visibility, unit }) => {
-  const convertVisibility = (visibility, unit) => {
-    if (unit === "imperial") {
-      return (visibility / 1609.34).toFixed(1); // Convert meters to miles
-    }
-    return (visibility / 1000).toFixed(1); // Convert meters to kilometers
-  };
+  const convertVisibility = (visibility, unit) =>
+    unit === "imperial"
+      ? (visibility / 1609.34).toFixed(1) // Convert meters to miles
+      : (visibility / 1000).toFixed(1); // Convert meters to kilometers
 
   return (
     <div className="detailItem">
@@ -21,4 +19,4 @@ const Visibility = ({ visibility, unit }) => {
   );
 };
 
-export default Visibility;
+export default React.memo(Visibility);

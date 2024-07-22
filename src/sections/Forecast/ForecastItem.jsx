@@ -23,4 +23,4 @@ const ForecastItem = ({ item, unit }) => {
   );
 };
 
-export default ForecastItem;
+export default React.memo(ForecastItem);

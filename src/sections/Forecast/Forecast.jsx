@@ -9,4 +9,4 @@ const Forecast = ({ forecast, unit }) => (
   </div>
 );
 
-export default Forecast;
+export default React.memo(Forecast);

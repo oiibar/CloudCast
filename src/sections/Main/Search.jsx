@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useCallback } from "react";
 import { CiSearch } from "react-icons/ci";
 import { IoIosArrowForward } from "react-icons/io";
 import { unitContext } from "../../AppContext";
@@ -17,28 +17,34 @@ const Search = ({ onClose, onSearch }) => {
   const [searchInput, setSearchInput] = useState("");
   const { setCity } = useContext(unitContext);
 
-  const handleInputChange = (e) => {
+  const handleInputChange = useCallback((e) => {
     setSearchInput(e.target.value);
-  };
+  }, []);
 
-  const handleSearch = () => {
+  const handleSearch = useCallback(() => {
     setCity(searchInput);
     onSearch();
     setSearchInput("");
     onClose();
-  };
+  }, [searchInput, setCity, onSearch, onClose]);
 
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      handleSearch();
-    }
-  };
+  const handleKeyDown = useCallback(
+    (e) => {
+      if (e.key === "Enter") {
+        handleSearch();
+      }
+    },
+    [handleSearch]
+  );
 
-  const handleCityClick = (cityName) => {
-    setCity(cityName);
-    onSearch();
-    onClose();
-  };
+  const handleCityClick = useCallback(
+    (cityName) => {
+      setCity(cityName);
+      onSearch();
+      onClose();
+    },
+    [setCity, onSearch, onClose]
+  );
 
   return (
     <>
@@ -46,15 +52,10 @@ const Search = ({ onClose, onSearch }) => {
       <div
         className="fixed inset-0 bg-black bg-opacity-50 transition-opacity duration-300"
         onClick={onClose}
-      ></div>
+      />
 
       {/* Modal */}
-      <aside
-        className="inset-0 bg-[#1E213A] w-full lg:w-1/3 h-screen text-center flex flex-col py-6 px-6 gap-8 overflow-hidden relative transition-transform transform translate-x-0"
-        style={{
-          transition: "transform 0.3s ease-out",
-        }}
-      >
+      <aside className="inset-0 bg-[#1E213A] w-full lg:w-1/3 h-screen text-center flex flex-col py-6 px-6 gap-8 overflow-hidden relative transition-transform transform translate-x-0">
         {/* Close Button */}
         <section className="flex justify-end p-4">
           <button className="text-white text-2xl" onClick={onClose}>
@@ -94,7 +95,6 @@ const Search = ({ onClose, onSearch }) => {
               onClick={() => handleCityClick(city)}
             >
               <span>{city}</span>
-
               <IoIosArrowForward />
             </button>
           ))}

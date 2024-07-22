@@ -15,4 +15,4 @@ const Button = ({ selected, onClick, children }) => {
   );
 };
 
-export default Button;
+export default React.memo(Button);

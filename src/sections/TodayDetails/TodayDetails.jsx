@@ -5,10 +5,10 @@ import Pressure from "./Details/Pressure";
 import Wind from "./Details/Wind";
 
 const TodayDetails = ({ weatherData = null, unit = "metric" }) => {
-  const wind = weatherData ? weatherData.wind : { speed: "--", deg: "--" };
-  const humidity = weatherData ? weatherData.main.humidity : "--";
-  const visibility = weatherData ? weatherData.visibility : "--";
-  const pressure = weatherData ? weatherData.main.pressure : "--";
+  const wind = weatherData?.wind || { speed: "--", deg: "--" };
+  const humidity = weatherData?.main?.humidity || "--";
+  const visibility = weatherData?.visibility || "--";
+  const pressure = weatherData?.main?.pressure || "--";
 
   return (
     <div className="container">
@@ -23,4 +23,4 @@ const TodayDetails = ({ weatherData = null, unit = "metric" }) => {
   );
 };
 
-export default TodayDetails;
+export default React.memo(TodayDetails);

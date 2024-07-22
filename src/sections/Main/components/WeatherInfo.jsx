@@ -14,7 +14,7 @@ const WeatherInfo = ({ weatherData, unit }) => {
       <img
         src={iconUrl}
         alt={description}
-        className={`mx-auto relative z-10 w-60 ${!weatherData ? "hidden" : ""}`}
+        className="mx-auto relative z-10 w-60"
       />
       <h1 className="text-9xl">
         {Math.round(temp)}
