@@ -47,9 +47,9 @@ Technologies used in the project:
 Here are some screenshots of the project:
 
 <p align="center">
-  <img src="./previews/Metric.png" alt="Metric">
-  <img src="./previews/Imperial.png" alt="Imperial">
-  <img src="./previews/Search.png" alt="Search">
+  <img src="./src/previews/Metric.png" alt="Metric">
+  <img src="./src/previews/Imperial.png" alt="Imperial">
+  <img src="./src/previews/Search.png" alt="Search">
 </p>
 
 <h2>💖Like my work?</h2>
